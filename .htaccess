@@ -1,0 +1,23 @@
+# Author: John Maurer (jmaurer@hawaii.edu)
+# Date: November 16, 2011
+# Allows /cgi-bin/get_metadata.py CGI script to be called from
+# /pacioos/metadata/[datasetid].[html|xml|txt]
+
+# Turn on the rewriting engine:
+
+RewriteEngine On
+
+# Ignore index page:
+
+RewriteCond  %{REQUEST_URI}  !^/pacioos/metadata/index.html$  [NC]
+RewriteCond  %{REQUEST_URI}  !^/pacioos/metadata/$  [NC]
+
+# 3 flavors: HTML, XML, and plain text:
+# [QSA,L] will append any existing query string from the source
+# to target, so you can use [id].html?format=fgdc to get to FGDC,
+# [id].html?format=iso to get to ISO, or just [id].html to get to
+# the default (ISO):
+
+RewriteRule ^(.*)\.html$ /cgi-bin/get_metadata.py?id=$1&style=html  [QSA,L]
+RewriteRule ^(.*)\.xml$ /cgi-bin/get_metadata.py?id=$1&style=xml  [QSA,L]
+RewriteRule ^(.*)\.txt$ /cgi-bin/get_metadata.py?id=$1&style=text  [QSA,L]
