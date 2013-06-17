@@ -1,7 +1,11 @@
 metadata-stylist
 ================
 
-Provides a web service (Python CGI) for dynamically presenting FGDC or ISO geospatial metadata from an XML file into HTML or plain text using XSLT transformations.
+Provides a web service (Python CGI) for dynamically presenting FGDC or ISO geospatial metadata from an XML file into HTML or plain text using XSLT transformations. More background info and many working examples available at http://pacioos.org/metadata/. 
+
+###Author:
+
+John Maurer (jmaurer@hawaii.edu)
 
 ###Dependencies:
 
@@ -19,7 +23,7 @@ Provides a web service (Python CGI) for dynamically presenting FGDC or ISO geosp
     replacing PacIOOS CSS stylesheet and SSI header/footer files with your own.
 * Configure metadata.py for your environment. Assumes FGDC and ISO XML files
   stored in "fgdc" and "iso" subdirectories of METADATA_DIR with filenames
-  equal to the dataset identifier (e.g. <datsetid>.xml):
+  equal to the dataset identifier (e.g. datsetid.xml):
   * METADATA_DIR = '/usr/local/apache/htdocs/pacioos/metadata'
   * XSLT_DIR = METADATA_DIR + '/xslt' 
 * Replace PacIOOS XSLT files with your own or modify ours for your environment,
@@ -30,3 +34,10 @@ Provides a web service (Python CGI) for dynamically presenting FGDC or ISO geosp
   called from an alternative URL pattern such as (in our usage):
   http://pacioos/metadata/[datasetid].[html|xml|txt]. This file must reside
   in the top folder (e.g. "metadata" in the above example).
+
+###Acknowledgements:
+
+* Thanks to NOAA NGDC for these helper XSLTs which have been used and
+  redistributed with their permission:
+  * xslt/iso2fgdc.xsl (Anna Milan)
+  * xslt/utils/printFormatted.xsl, printTextLines.xsl (Richard Fozzard)
